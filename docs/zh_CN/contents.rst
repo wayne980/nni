@@ -20,4 +20,4 @@ Neural Network Intelligence
     研究和出版物 <ResearchPublications>
     常见问题 <Tutorial/FAQ>
     如何贡献 <contribution>
-    更改日志 <Release>
+    Change Log <Release>

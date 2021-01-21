@@ -133,7 +133,7 @@ Slim Pruner 的用户配置
      - 88.5%
 
 
-实验代码在 :githublink:`这里 <examples/model_compress/>`
+实验代码在 :githublink:`examples/model_compress/BNN_quantizer_cifar10.py <examples/model_compress/pruning/reproduced/slim_torch_cifar10.py>`
 
 ----
 
@@ -252,7 +252,7 @@ L1Filter Pruner 的用户配置
      - 64.0%
 
 
-实验代码在 :githublink:`这里 <examples/model_compress/>`
+实验代码在 :githublink:`examples/model_compress/pruning/reproduced/L1_torch_cifar10.py <examples/model_compress/pruning/reproduced/L1_torch_cifar10.py>`
 
 ----
 
@@ -316,7 +316,7 @@ PyTorch 代码
 
 注意：ActivationAPoZRankFilterPruner 用于修剪深度神经网络中的卷积层，因此 ``op_types`` 字段仅支持卷积层。
 
-参考 :githublink:`示例 <examples/model_compress/model_prune_torch.py>` 了解更多信息。
+参考 :githublink:`示例 <examples/model_compress/pruning/model_prune_torch.py>` 了解更多信息。
 
 ActivationAPoZRankFilterPruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -352,7 +352,7 @@ PyTorch 代码
 
 注意：ActivationMeanRankFilterPruner 用于修剪深度神经网络中的卷积层，因此 ``op_types`` 字段仅支持卷积层。
 
-参考 :githublink:`示例 <examples/model_compress/model_prune_torch.py>` 了解更多信息。
+参考 :githublink:`示例 <examples/model_compress/pruning/model_prune_torch.py>` 了解更多信息。
 
 ActivationMeanRankFilterPruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -472,7 +472,7 @@ PyTorch 代码
 
    pruner.update_epoch(epoch)
 
-参考 :githublink:`示例 <examples/model_compress/model_prune_torch.py>` 了解更多信息。
+参考 :githublink:`示例 <examples/model_compress/pruning/model_prune_torch.py>` 了解更多信息。
 
 AGP Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -512,7 +512,7 @@ PyTorch 代码
    pruner = NetAdaptPruner(model, config_list, short_term_fine_tuner=short_term_fine_tuner, evaluator=evaluator,base_algo='l1', experiment_data_dir='./')
    pruner.compress()
 
-参考 :githublink:`示例 <examples/model_compress/auto_pruners_torch.py>` 了解更多信息。
+参考 :githublink:`示例 <examples/model_compress/pruning/auto_pruners_torch.py>` 了解更多信息。
 
 NetAdapt Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -553,7 +553,7 @@ PyTorch 代码
    pruner = SimulatedAnnealingPruner(model, config_list, evaluator=evaluator, base_algo='l1', cool_down_rate=0.9, experiment_data_dir='./')
    pruner.compress()
 
-参考 :githublink:`示例 <examples/model_compress/auto_pruners_torch.py>` 了解更多信息。
+参考 :githublink:`示例 <examples/model_compress/pruning/auto_pruners_torch.py>` 了解更多信息。
 
 SimulatedAnnealing Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -583,7 +583,7 @@ PyTorch 代码
 
 .. code-block:: python
 
-   from nni.algorithms.compression.pytorch.pruning import ADMMPruner
+   from nni.algorithms.compression.pytorch.pruning import AutoCompressPruner
    config_list = [{
            'sparsity': 0.5,
            'op_types': ['Conv2d']
@@ -594,7 +594,7 @@ PyTorch 代码
                cool_down_rate=0.9, admm_num_iterations=30, admm_training_epochs=5, experiment_data_dir='./')
    pruner.compress()
 
-参考 :githublink:`示例 <examples/model_compress/auto_pruners_torch.py>` 了解更多信息。
+参考 :githublink:`示例 <examples/model_compress/pruning/auto_pruners_torch.py>` 了解更多信息。
 
 AutoCompress Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -632,9 +632,9 @@ PyTorch 代码
    pruner = AMCPruner(model, config_list, evaluator, val_loader, flops_ratio=0.5)
    pruner.compress()
 
-你可以参考 :githublink:`示例 <examples/model_compress/amc/>` 获取更多信息。
+你可以参考 :githublink:`示例 <examples/model_compress/pruning/amc/>` 获取更多信息。
 
-AutoCompress Pruner 的用户配置
+AMC Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **PyTorch**
@@ -660,7 +660,7 @@ AutoCompress Pruner 的用户配置
      - 50%
 
 
-实验代码在 :githublink:`这里 <examples/model_compress/amc/>`。
+实验代码在 :githublink:`这里 <examples/model_compress/pruning/amc/>`。
 
 ADMM Pruner
 -----------
@@ -694,7 +694,7 @@ PyTorch 代码
    pruner = ADMMPruner(model, config_list, trainer=trainer, num_iterations=30, epochs=5)
    pruner.compress()
 
-参考 :githublink:`示例 <examples/model_compress/auto_pruners_torch.py>` 了解更多信息。
+参考 :githublink:`示例 <examples/model_compress/pruning/auto_pruners_torch.py>` 了解更多信息。
 
 ADMM Pruner 的用户配置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -755,7 +755,7 @@ LotteryTicket Pruner 的用户配置
 复现实验
 ^^^^^^^^^^^^^^^^^^^^^
 
-在重现时，在 MNIST 使用了与论文相同的配置。 实验代码在 :githublink:`这里 <examples/model_compress/lottery_torch_mnist_fc.py>`。 在次实验中，修剪了10次，在每次修剪后，训练了 50 个 epoch。
+在重现时，在 MNIST 使用了与论文相同的配置。 实验代码在 :githublink:`这里 <examples/model_compress/pruning/reproduced/lottery_torch_mnist_fc.py>`。 在次实验中，修剪了10次，在每次修剪后，训练了 50 个 epoch。
 
 
 .. image:: ../../img/lottery_ticket_mnist_fc.png
